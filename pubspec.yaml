@@ -1,6 +1,6 @@
 name: flutter_open_street_map
 description: A flutter place search and location picker plugin that uses Open Street Map.
-version: 0.0.1
+version: 0.0.3
 homepage: https://github.com/MicroProgramer/flutter_open_street_map.git
 
 environment:

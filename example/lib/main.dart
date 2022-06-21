@@ -77,7 +77,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: FlutterOpenStreetMap(
-          center: LatLong(23, 89),
+          center: LatLong(5, 10),
           onPicked: (pickedData) {
             print(pickedData.latLong.latitude);
             print(pickedData.latLong.longitude);

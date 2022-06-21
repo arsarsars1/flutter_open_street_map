@@ -167,7 +167,7 @@ class _FlutterOpenStreetMapState
                   _mapController.move(
                       _mapController.center, _mapController.zoom + 1);
                 },
-                child: const Icon(Icons.zoom_in_map),
+                child: Icon(Icons.add),
               )),
           Positioned(
               bottom: 60,
@@ -178,7 +178,7 @@ class _FlutterOpenStreetMapState
                   _mapController.move(
                       _mapController.center, _mapController.zoom - 1);
                 },
-                child: const Icon(Icons.zoom_out_map),
+                child: Icon(Icons.remove),
               )),
           Positioned(
             top: 0,

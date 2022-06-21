@@ -1,3 +1,4 @@
-## 0.0.1
+## 0.0.1 
 
-* TODO: Describe initial release.
+* Support for all 6 platforms.
+* Delay for finishing typing.

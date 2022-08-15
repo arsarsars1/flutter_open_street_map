@@ -10,6 +10,7 @@ import 'package:latlong2/latlong.dart';
 
 class FlutterOpenStreetMap extends StatefulWidget {
   final LatLong center;
+  final Widget? buttonWidget;
   final void Function(PickedData pickedData) onPicked;
   final Color? primaryColor;
   final bool? showZoomButtons;
@@ -19,7 +20,8 @@ class FlutterOpenStreetMap extends StatefulWidget {
       required this.center,
       required this.onPicked,
       this.primaryColor,
-      this.showZoomButtons})
+      this.showZoomButtons,
+      this.buttonWidget})
       : super(key: key);
 
   @override
@@ -282,12 +284,19 @@ class _FlutterOpenStreetMapState extends State<FlutterOpenStreetMap> {
             child: Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child:
-                    CustomButton('Set Current Location', onPressed: () async {
-                  pickData().then((value) {
-                    widget.onPicked(value);
-                  });
-                }, backgroundcolor: Theme.of(context).primaryColor),
+                child: widget.buttonWidget != null
+                    ? InkWell(
+                        onTap: () async {
+                          await pickData().then((value) {
+                            widget.onPicked(value);
+                          });
+                        },
+                        child: widget.buttonWidget)
+                    : CustomButton('Set Current Location', onPressed: () async {
+                        pickData().then((value) {
+                          widget.onPicked(value);
+                        });
+                      }, backgroundcolor: Theme.of(context).primaryColor),
               ),
             ),
           )

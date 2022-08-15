@@ -10,6 +10,7 @@ import 'package:latlong2/latlong.dart';
 
 class FlutterOpenStreetMap extends StatefulWidget {
   final LatLong center;
+  final Widget? markerWidget;
   final Widget? buttonWidget;
   final InputDecoration? inputDecoration;
   final void Function(PickedData pickedData) onPicked;
@@ -23,7 +24,8 @@ class FlutterOpenStreetMap extends StatefulWidget {
       this.primaryColor,
       this.showZoomButtons,
       this.buttonWidget,
-      this.inputDecoration})
+      this.inputDecoration,
+      this.markerWidget})
       : super(key: key);
 
   @override
@@ -163,13 +165,14 @@ class _FlutterOpenStreetMapState extends State<FlutterOpenStreetMap> {
                   }),
                 ),
               )),
-          const Positioned.fill(
+          Positioned.fill(
               child: IgnorePointer(
             child: Center(
-              child: Icon(
-                Icons.location_pin,
-                size: 50,
-              ),
+              child: widget.markerWidget ??
+                  const Icon(
+                    Icons.location_pin,
+                    size: 50,
+                  ),
             ),
           )),
           if (showZoom)

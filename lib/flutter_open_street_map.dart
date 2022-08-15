@@ -10,6 +10,7 @@ import 'package:latlong2/latlong.dart';
 
 class FlutterOpenStreetMap extends StatefulWidget {
   final LatLong center;
+  final TextStyle? textStyle;
   final Color? markerColor;
   final Widget? markerWidget;
   final Widget? buttonWidget;
@@ -23,6 +24,7 @@ class FlutterOpenStreetMap extends StatefulWidget {
       required this.center,
       required this.onPicked,
       this.primaryColor,
+      this.textStyle,
       this.showZoomButtons,
       this.buttonWidget,
       this.inputDecoration,
@@ -163,6 +165,7 @@ class _FlutterOpenStreetMapState extends State<FlutterOpenStreetMap> {
                     return Text(
                       _searchController.text,
                       textAlign: TextAlign.center,
+                      style: widget.textStyle,
                     );
                   }),
                 ),

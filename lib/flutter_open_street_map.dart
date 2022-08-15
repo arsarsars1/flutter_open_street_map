@@ -11,6 +11,7 @@ import 'package:latlong2/latlong.dart';
 class FlutterOpenStreetMap extends StatefulWidget {
   final LatLong center;
   final Widget? buttonWidget;
+  final InputDecoration? inputDecoration;
   final void Function(PickedData pickedData) onPicked;
   final Color? primaryColor;
   final bool? showZoomButtons;
@@ -21,7 +22,8 @@ class FlutterOpenStreetMap extends StatefulWidget {
       required this.onPicked,
       this.primaryColor,
       this.showZoomButtons,
-      this.buttonWidget})
+      this.buttonWidget,
+      this.inputDecoration})
       : super(key: key);
 
   @override
@@ -209,11 +211,12 @@ class _FlutterOpenStreetMapState extends State<FlutterOpenStreetMap> {
                   TextFormField(
                       controller: _searchController,
                       focusNode: _focusNode,
-                      decoration: InputDecoration(
-                        hintText: 'Search Location',
-                        border: inputBorder,
-                        focusedBorder: inputFocusBorder,
-                      ),
+                      decoration: widget.inputDecoration ??
+                          InputDecoration(
+                            hintText: 'Search Location',
+                            border: inputBorder,
+                            focusedBorder: inputFocusBorder,
+                          ),
                       onChanged: (String value) {
                         if (_debounce?.isActive ?? false) _debounce?.cancel();
 
